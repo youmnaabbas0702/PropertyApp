@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<body class="starter-page-page">
+    <main class="main">
+
+        <!-- Page Title -->
+        <div class="page-title">
+            <div class="heading">
+                <div class="container">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-lg-8">
+                            <h1 style="color:white;">Easily find your room</h1>
+                            <p class="mb-0">Dear Menofia governrate students, this website is for you, easily browse verified properties with transparent details, compare prices, and find the perfect student accommodation effortlessly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="breadcrumbs">
+                <div class="container">
+                    <ol>
+                        <li class="current">Home</li>
+                        @if (Context.Session.GetInt32("UserId") == null)
+                        {
+                            <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                        }
+                    </ol>
+                </div>
+            </nav>
+        </div><!-- End Page Title -->
+        <!-- Starter Section Section -->
+        <section id="starter-section" class="starter-section section">
+            
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <div class="row justify-content-center">
+                    <h2 style="color:#101c24;">Preview</h2>
+                    <div class="col-lg-8 col-md-10 col-12">
+                        <div id="carouselExampleCaptionsAutoplay" class="carousel slide" data-bs-ride="carousel">
+                            <!-- Carousel Indicators -->
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleCaptionsAutoplay" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptionsAutoplay" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptionsAutoplay" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+
+                            <!-- Carousel Inner -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <a asp-controller="Property" asp-action="Index" asp-route-id="1"><img src="~/assets/img/sadat.jpg" class="d-block w-100" alt="Sadat city"></a>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5 style="color:#101c24; ">Sadat city</h5>
+                                        <p>discover available properties in Sadat.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <a asp-controller="Property" asp-action="Index" asp-route-id="2"><img src="~/assets/img/shebinelkom.jpg" class="d-block w-100" alt="Shebin city"></a>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5 style="color:#101c24; ">Shebin city</h5>
+                                        <p>discover available properties in Shebin.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <a asp-controller="Property" asp-action="Index" asp-route-id="3"><img src="~/assets/img/menouf.jpg" class="d-block w-100" alt="Menouf city"></a>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5 style="color:#101c24; ">Menouf city</h5>
+                                        <p>discover available properties in Menouf.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Carousel Controls (Previous and Next) -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptionsAutoplay" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptionsAutoplay" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section><!-- /Starter Section Section -->
+
+    </main>
+</body>
+<style>
+    .carousel-caption {
+        background-color: rgba(255, 255, 255, 0.7); /* 70% transparency */
+        color: #000; /* Ensure the text color is dark */
+        padding: 15px;
+        border-radius: 5px;
+    }
+</style>

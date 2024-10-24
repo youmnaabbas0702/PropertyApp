@@ -1,0 +1,115 @@
+﻿@using propertyProject.ViewModels
+@model EditFormViewModel
+
+@{
+    ViewData["Title"] = "account edit";
+}
+<div class="container edit-card">
+    <h2>Edit Account</h2>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <select asp-for="CityId" class="form-control" asp-items="Model.Cities">
+                <option value="">-- Select City --</option>
+            </select>
+            <span asp-validation-for="CityId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewPassword"></label>
+            <div class="input-group">
+                <input asp-for="NewPassword" class="form-control" type="password" id="newPassword" />
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="bi bi-eye-slash" id="toggleNewPassword"></i>
+                    </span>
+                </div>
+            </div>
+            <span asp-validation-for="NewPassword" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmNewPassword"></label>
+            <div class="input-group">
+                <input asp-for="ConfirmNewPassword" class="form-control" type="password" id="confirmPassword" />
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="bi bi-eye-slash" id="toggleConfirmPassword"></i>
+                    </span>
+                </div>
+            </div>
+            <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Account</button>
+    </form>
+</div>
+<script>
+    document.querySelectorAll('.bi-eye-slash').forEach(function (icon) {
+        icon.addEventListener('click', function () {
+            const input = this.closest('.input-group').querySelector('input');
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.classList.remove('bi-eye-slash');
+                this.classList.add('bi-eye');
+            } else {
+                input.type = 'password';
+                this.classList.remove('bi-eye');
+                this.classList.add('bi-eye-slash');
+            }
+        });
+    });
+</script>
+
+<style>
+    .edit-card {
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+    }
+
+        .edit-card h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #008374;
+            margin-bottom: 20px;
+        }
+
+        .edit-card .btn-primary {
+            background-color: #008374;
+            border-color: #008374;
+        }
+
+            .edit-card .btn-primary:hover {
+                background-color: #005d51;
+                border-color: #004a40;
+            }
+
+        .edit-card .form-check-label {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .edit-card a {
+            font-family: 'Poppins', sans-serif;
+            color: #008374;
+        }
+
+            .edit-card a:hover {
+                color: #005d51;
+            }
+</style>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

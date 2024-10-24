@@ -1,0 +1,60 @@
+﻿@model User
+@{
+    ViewData["Title"] = "account details";
+}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h4>your Account</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> @Model.Name</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+            <p><strong>City:</strong> @Model.City.CityName</p>
+
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="custom-btn-edit">
+                <i class="bi bi-pencil"></i>
+            </a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="custom-btn-delete" onclick="return confirm('Are you sure you want to delete this account?');">
+                <i class="bi bi-trash"></i>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .custom-btn-edit {
+        background-color: white;
+        border: 2px solid yellow;
+        color: yellow;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .custom-btn-delete {
+        background-color: white;
+        border: 2px solid red;
+        color: red;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-left: 4px;
+    }
+
+        /* Change icon color inside the buttons */
+        .custom-btn-edit i, .custom-btn-delete i {
+            color: inherit; /* Use the button text color */
+        }
+
+    /* Hover effects */
+    .custom-btn-edit:hover {
+        background-color: yellow;
+        color: white;
+    }
+
+    .custom-btn-delete:hover {
+        background-color: red;
+        color: white;
+    }
+
+</style>

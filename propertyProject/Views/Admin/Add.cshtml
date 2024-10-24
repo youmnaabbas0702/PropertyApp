@@ -1,0 +1,93 @@
+﻿@using propertyProject.ViewModels
+@model AddPropertyFormViewModel
+
+@{
+    ViewData["Title"] = "Add Property";
+}
+
+<body class="starter-page-page">
+    <main class="main">
+        <section id="starter-section" class="starter-section section">
+            <div class="container mt-5" style=" width: 80%; margin: auto">
+                <h5 >
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Add a new property
+                </h5>
+                <form asp-action="Add" method="post" enctype="multipart/form-data">
+                    <!-- Address -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Address"></label>
+                        <input asp-for="Address" type="text" class="form-control" placeholder="Street Number, Street Name, District, City, Governorate" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" type="number" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <!-- Rooms Available -->
+                    <div class="form-group mb-3">
+                        <label asp-for="RoomsAvailable">Rooms Available</label>
+                        <input asp-for="RoomsAvailable" type="number" class="form-control" />
+                        <span asp-validation-for="RoomsAvailable" class="text-danger"></span>
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div class="form-group mb-3">
+                        <label asp-for="ContactNumber">Contact Number</label>
+                        <input asp-for="ContactNumber" type="text" class="form-control" />
+                        <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Gender">Gender</label>
+                        <select class="form-control" asp-for="Gender" asp-items="@Model.Genders"></select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Description"></label>
+                        <input asp-for="Description" type="text" class="form-control form-control-lg" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="services">Services</label>
+                        <select id="services" name="SelectedServiceIds" asp-items="Model.AvailableServices" class="form-control" multiple="multiple"></select>
+                    </div>
+
+                    <div class="form-group custom-file mb-3">
+                        <label asp-for="CoverImage" style="display:block;">Cover Image</label>
+                        <input asp-for="CoverImage" type="file" class="custom-file-input">
+                        <label  for="CoverImage"></label>
+                    </div>
+
+                    <div class="form-group custom-file mb-3">
+                        <label asp-for="Images" style="display:block;">Property Images</label>
+                        <input asp-for="Images" type="file" class="custom-file-input" multiple>
+                        <label for="AdditionalImages"></label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Property</button>
+                </form>
+                </div>
+         </section>
+    </main>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function() {
+            // Initialize Select2 on the element with id 'services'
+            $('#services').select2();
+        });
+    </script>
+}
+

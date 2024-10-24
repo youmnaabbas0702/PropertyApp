@@ -1,0 +1,88 @@
+﻿/* General Typography */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #008374;
+}
+
+.navbar, .nav-link {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Color scheme */
+:root {
+    --theme-color: #008374;
+    --white: #ffffff;
+}
+
+body, .bg-primary {
+    background-color: var(--white) !important;
+}
+
+/* Button Colors */
+.btn {
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--theme-color) !important; /* Green */
+    border-color: var(--theme-color) !important;
+    color: var(--white) !important;
+}
+
+    /* Button hover */
+    .btn-primary:hover {
+        background-color: hsl(168, 100%, 40%); /* Slightly darker green */
+        border-color: hsl(168, 100%, 40%);
+    }
+
+    /* Focus or active button state */
+    .btn-primary:focus, .btn-primary:active {
+        box-shadow: none !important;
+    }
+
+/* Form Inputs */
+input, input[type="text"], input[type="password"], input[type="email"], input[type="number"], select {
+    border-radius: 4px;
+    border: 1px solid var(--theme-color);
+}
+
+/* Alert Styling */
+.alert {
+    border-radius: 4px;
+}
+
+/* Login Form */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Additional Styles */
+.login-option {
+    margin-top: 20px;
+}
+
+/* Apply global spacing and styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.custom-file-label::after {
+    content: "Browse";
+    background-color: #008374;
+    border-color: #008374;
+    color: white;
+}
+
+/* Margin between input fields */
+.form-control {
+    margin-bottom: 15px;
+}
